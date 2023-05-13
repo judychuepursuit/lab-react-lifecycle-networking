@@ -7,6 +7,13 @@ export const Employee = ({ employee }) => {
   const [showPets, setShowPets] = useState(false)
   const [pets, setPets] = useState([]);
 
+  //NOT working? (ex:"Susan Gallegos")
+  // BASE_URL = https://resource-veterinarian-api.fly.dev/api
+  // Get all employees: `${BASE_URL}/employees`
+  // Get a single employee: `${BASE_URL}/employees/${employee.id}`
+  // Get all pets: `${BASE_URL}/api/pets`
+  // Get all pets assigned to an employee: `${BASE_URL}/api/pets?employeeId=${employee.id}`
+
   useEffect(()=> {
     fetch(`https://resource-veterinarian-api.fly.dev/api/pets?employeeId=${employee.id}`)
     .then((response) => response.json())
