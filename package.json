@@ -1,4 +1,5 @@
 {
+  "homepage": "http://judychuepursuit.github.io/react-networking-lab",
   "name": "react-networking-lab",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +14,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "./node_modules/.bin/cypress open",
     "eject": "react-scripts eject"
@@ -38,6 +41,7 @@
   "devDependencies": {
     "cypress": "^9.7.0",
     "cypress-react-selector": "^2.3.11",
-    "cypress-watch-and-reload": "^1.5.4"
+    "cypress-watch-and-reload": "^1.5.4",
+    "gh-pages": "^5.0.0"
   }
 }
