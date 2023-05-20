@@ -5,6 +5,7 @@ import "./Employee.css";
 export const Employee = ({ employee }) => {
   const [showPets, setShowPets] = useState(false)
   const [pets, setPets] = useState([]);
+  const BASE_URL = `https://resource-veterinarian-api.fly.dev/api/`;
 
   //NOT working? (ex:"Susan Gallegos")
   // BASE_URL = https://resource-veterinarian-api.fly.dev/api
@@ -27,14 +28,35 @@ export const Employee = ({ employee }) => {
     setShowPets(!showPets)
   }
 
+  let firstLast = `${employee.firstName} ${employee.lastName}`
+  let newname = employee.prefix 
+  ? `${employee.prefix} ${firstLast} ${employee.postfix}` : employee.postfix 
+  ? `${employee.firstName} ${employee.lastName}, ${employee.postfix}`: `${employee.firstName} ${employee.lastName}`;
+         
   return (
     <article className="employee">
-      <h3>{employee.firstName} {employee.lastName}</h3>
+      <h3>{newname}</h3>
       <h4>{employee.title}</h4>
-      <button onClick={toggleShowPets}>{showPets ? "Hide Pets" : "Show Pets"}</button>
-      {showPets ? <PetList pets={pets}/> : <></>}
+      {showPets ?(
+        <>
+        <PetList pets={pets} key={pets.id}/>
+        <button onClick={toggleShowPets}>Hide Pets</button>
+        </>):(
+        <button onClick={toggleShowPets}>Show Pets</button>
+      )}
     </article>
   );
 };
+
+
+//   return (
+//     <article className="employee">
+//       <h3>{employee.firstName} {employee.lastName}</h3>
+//       <h4>{employee.title}</h4>
+//       <button onClick={toggleShowPets}>{showPets ? "Hide Pets" : "Show Pets"}</button>
+//       {showPets ? <PetList pets={pets}/> : <></>}
+//     </article>
+//   );
+// };
 
 export default Employee;
